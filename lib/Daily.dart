@@ -39,7 +39,7 @@ class Daily extends StatelessWidget {
                           vertical: 20.0, horizontal: 15.0),
                       height: 400.0,
                       width: double.infinity,
-                      child:  Column(
+                      child:  Row(
                     children: [
                     Text(
                     gettime(Dailydata!.daily[index].dt!),
@@ -65,7 +65,7 @@ class Daily extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
         dailylist(),
       ],
