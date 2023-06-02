@@ -6,53 +6,55 @@ class Daily extends StatelessWidget {
   final dailydata Dailydata;
   Daily({required this.Dailydata});
 
+
   Widget dailylist() {
     String gettime(final time) {
       DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(time * 1000);
-      String x = DateFormat('MMM').format(dateTime);
+      String x = DateFormat('EEE').format(dateTime);
       return x;
     }
     return Container(
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-          color: Color(0xFF58B1F6), borderRadius: BorderRadius.circular(7.0)),
+          color: Color(0xFF2D8EF6), borderRadius: BorderRadius.circular(7.0)),
       child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
-        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
         children: [
-          Center(
-            child: Container(
-              color: Color(0xFF58B1F6),
+
+             Container(
+              color: Color(0xFF2D8EF6),
               margin: EdgeInsets.only(top: 15.0, bottom: 0.0),
               child: Text('Next days', style: TextStyle(color: Colors.white)),
             ),
-          ),
+
           Container(
             child: SizedBox(
-              height: 500.0,
+              height: 450.0,
               child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                  scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(
-                          vertical: 20.0, horizontal: 15.0),
-                      height: 400.0,
+                    return   Container(
+                      height: 15.0,
                       width: double.infinity,
-                      child:  Row(
-                    children: [
-                    Text(
-                    gettime(Dailydata!.daily[index].dt!),
-                    style: TextStyle(color: Colors.white),
-                    ),
-                    Image.asset('assets/weather/${Dailydata!.daily[index].weather![0].icon!}.png', height: 20.0, width: 20.0),
-                    Text(
-                    Dailydata!.daily[index]!.temp!.min!.toString() + '°/' + Dailydata!.daily[index]!.temp!.max!.toString(),
-                    style: TextStyle(color: Colors.white),
-                    ),
-                    ],
+                      margin: EdgeInsets.all(20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                      children: [
+                      Text(
+                      gettime(Dailydata!.daily[index].dt!),
+                      style: TextStyle(color: Colors.white),
+                      ),
+                      Image.asset('assets/weather/${Dailydata!.daily[index].weather![0].icon!}.png', height: 20.0, width: 20.0),
+                      Text(
+                      Dailydata!.daily[index]!.temp!.min!.toString() + '° / ' + Dailydata!.daily[index]!.temp!.max!.toString()+'°',
+                      style: TextStyle(color: Colors.white),
+                      ),
+                      ],
+                      ),
                     )
-                    );},
+                    ;},
                   itemCount: Dailydata!.daily.length > 10
                       ? 10
                       : Dailydata?.daily.length!),
@@ -66,14 +68,56 @@ class Daily extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         dailylist(),
+suntime(),
+        Container(
+          margin: EdgeInsets.all(7.0),
+          alignment: Alignment.center,
+            child: Text('Rise And Shine',style: TextStyle(fontWeight: FontWeight.w900,color: Colors.white,fontSize: 25.0)))
+
       ],
     );
   }
+
+   Widget suntime() {
+    String gettime(final time) {
+      DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(time * 1000);
+      String x = DateFormat('Hm').format(dateTime);
+      return x;}
+   return Container(margin: EdgeInsets.all(10.0),
+      height: 80.0,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          color: Color(0xFF2D8EF6), borderRadius: BorderRadius.circular(7.0)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [Text('Sunrise tommorow',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w300),),
+                  SizedBox(
+
+                    height: 5.0,
+
+                  ),
+                  Text(gettime(Dailydata!.daily[1].sunrise),style:TextStyle(color: Colors.white,fontWeight: FontWeight.w600) ,)],
+              ),Image(image: AssetImage('assets/icons/sun.png'),alignment: Alignment.bottomCenter
+                ,height: 30.0,width: 30.0,),Column(
+                children: [Text('Sunset tommorow',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w300)),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                  Text(gettime(Dailydata!.daily[1].sunset),style:TextStyle(color: Colors.white,fontWeight: FontWeight.w600))],
+              )
+            ],            )
+        ],
+      ),);
+
+
+  }
 }
 
-// Dailydata!.daily[index].dt!,
-// Dailydata!.daily[index].weather![0].icon!,
-// Dailydata!.daily[index]!.temp!.min!,
-// Dailydata!.daily[index]!.temp!.max! as int),

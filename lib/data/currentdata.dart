@@ -19,10 +19,10 @@ class Current {
   int? pressure;
   int? humidity;
   double? dewPoint;
-  double? uvi;
+  int? uvi;
   int? clouds;
   int? visibility;
-  double? windSpeed;
+  int? windSpeed;
   int? windDeg;
   List<Weather>? weather;
 
@@ -44,9 +44,9 @@ class Current {
         temp: (json['temp'] as num?)?.round(),
         feelsLike: (json['feels_like'] as num?)?.toDouble(),
         humidity: json['humidity'] as int?,
-        uvi: json['uvi'] as double?,
+        uvi: (json['uvi']).round(),
         clouds: json['clouds'] as int?,
-        windSpeed: (json['wind_speed'] as num?)?.toDouble(),
+        windSpeed: (json['wind_speed'] as num?)?.round(),
         weather: (json['weather'] as List<dynamic>?)
             ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
             .toList(),

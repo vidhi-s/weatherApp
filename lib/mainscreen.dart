@@ -16,7 +16,7 @@ class _mainscreenState extends State<mainscreen> {
   final Fetching fetching = Get.put(Fetching(), permanent: true);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Color(0xFF93CEFF),
+    return Scaffold(backgroundColor: Color(0xFF2336C7),
       body: SafeArea(
 
         child: Obx(() => fetching.isloading().isTrue
@@ -25,19 +25,22 @@ class _mainscreenState extends State<mainscreen> {
                 color: Colors.blue,
               ))
             :
-              SizedBox.expand(
 
-                child: ListView(
-                    scrollDirection: Axis.vertical,
+                 SizedBox.expand(
+
+                  child: ListView(
+
+                      scrollDirection: Axis.vertical,
 shrinkWrap: true,
-                    children: <Widget>[
-                       header(),
-                      hours(Hourlydata: fetching.getweatherdata().gethourly()),
-                      Daily(Dailydata: fetching.getweatherdata().getdaily()),
-                    ],
-                  ),
+                      children: <Widget>[
+                         header(),
+                        hours(Hourlydata: fetching.getweatherdata().gethourly()),
+                        Daily(Dailydata: fetching.getweatherdata().getdaily()),
+                      ],
+                    ),
+                ),
               ),
-            )),
+            ),
 
     );
   }

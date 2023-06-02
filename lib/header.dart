@@ -73,6 +73,7 @@ alignment: Alignment.topLeft,
           ),
     currentW(Currentdata: fetching.getweatherdata().getcurrent() ),
 
+
             ]),
 
       ],

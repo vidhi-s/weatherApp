@@ -68,8 +68,8 @@ class Daily {
   };
 }
 class Temp {
-  double? min;
-  double? max;
+  int? min;
+  int? max;
 
   Temp({this.min, this.max});
 
