@@ -49,7 +49,7 @@ crossAxisAlignment: CrossAxisAlignment.start,
                 margin: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Column(
 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [ Text('Humidity',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.bold)),
+                  children: [ Text('Humidity',style: TextStyle(color: Colors.white70,)),
                     Image(image: AssetImage('assets/icons/humidity.png'),color:Colors.lightBlueAccent,height: 35.0,
                     width: 35.0,),
 
@@ -60,7 +60,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 child: Column(
 
                   children: [Text('Windspeed',style: TextStyle(color: Colors.white70),),
-                    Image(image: AssetImage('assets/icons/windspeed.png',),color: Colors.white54,height: 35.0,
+                    Image(image: AssetImage('assets/icons/windspeed.png',),color: Colors.lightBlueAccent,height: 35.0,
                         width: 35.0),
                     Text(Currentdata!.current.windSpeed.toString()+'Km/h',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold))
                   ],

@@ -41,6 +41,7 @@ class _headerState extends State<header> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [SizedBox(
           height: 50.0,
+              
         ),
 
           Container(

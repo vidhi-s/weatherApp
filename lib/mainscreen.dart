@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mausam/data/bycity.dart';
 import 'Daily.dart';
 import 'fetchingeverything.dart';
 import 'package:mausam/header.dart';
 import 'package:mausam/hours.dart';
+
 
 class mainscreen extends StatefulWidget {
   const mainscreen({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class _mainscreenState extends State<mainscreen> {
   final Fetching fetching = Get.put(Fetching(), permanent: true);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Color(0xFF2336C7),
+    return Scaffold(backgroundColor: Color(0xFF5b7ede),
       body: SafeArea(
 
         child: Obx(() => fetching.isloading().isTrue
@@ -33,6 +35,7 @@ class _mainscreenState extends State<mainscreen> {
                       scrollDirection: Axis.vertical,
 shrinkWrap: true,
                       children: <Widget>[
+
                          header(),
                         hours(Hourlydata: fetching.getweatherdata().gethourly()),
                         Daily(Dailydata: fetching.getweatherdata().getdaily()),

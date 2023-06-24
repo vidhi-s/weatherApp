@@ -11,23 +11,25 @@ class hours extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-          color: Color(0xFF2D8EF6),borderRadius: BorderRadius.circular(7.0)
+          color: Color(0xFF7696df),
+          borderRadius: BorderRadius.circular(7.0)
       ),
 
       child: Column(
         children: [
       Center(
-      child: Container(color:  Color(0xFF2D8EF6),
+      child: Container(                color: Color(0xFF7696df),
       margin: EdgeInsets.only(top:15.0,bottom:0.0),
       child: Text('Today',style: TextStyle(
       color: Colors.white)
 
       ),),
       ),
+      Divider(color: Colors.white60,indent: 20.0,endIndent: 20.0,),
       Container(
 
             child: SizedBox(
-              height: 200.0,
+              height: 170.0,
               child: ListView.builder(scrollDirection: Axis.horizontal, shrinkWrap: true,itemBuilder:(context
                   ,index){
                 return  Container(
